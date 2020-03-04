@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EmailPassword.LoginActivity">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email Id"
+        android:id="@+id/email"
+        app:layout_constraintTop_toTopOf="parent"
+        android:inputType="textEmailAddress"></EditText>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:id="@+id/password"
+        app:layout_constraintTop_toBottomOf="@+id/email"
+        android:inputType="textEmailAddress"></EditText>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/register"
+        android:text="register"
+        app:layout_constraintTop_toBottomOf="@+id/password"></Button>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
