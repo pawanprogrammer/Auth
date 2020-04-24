@@ -3,6 +3,7 @@ package com.trishasofttech.authentication.MysqlPhpApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -26,6 +27,9 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText name, email, mobile, password;
     private String url = "http://searchkero.com/rachit/register.php";
 
+    private SharedPreferences sp;
+    private SharedPreferences.Editor ed;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +41,8 @@ public class RegisterActivity extends AppCompatActivity {
         signin = findViewById(R.id.signin);
         register = findViewById(R.id.register);
 
+        sp = getSharedPreferences("profile", 0);
+        ed = sp.edit();
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,6 +69,10 @@ public class RegisterActivity extends AppCompatActivity {
                                 MainActivity.class);
                         startActivity(intent);
                         finish();
+                        /*to save the name email in sp file*/
+                        ed.putString("name", name.getText().toString());
+                        ed.putString("email", email.getText().toString());
+                        ed.commit();
                     }
                 }, new Response.ErrorListener() {
             @Override

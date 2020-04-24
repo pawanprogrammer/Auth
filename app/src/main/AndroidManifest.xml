@@ -13,14 +13,16 @@
         android:theme="@style/AppTheme">
         <activity android:name=".FacebookLogin.FacebookLoginActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation">
+
+        </activity>
+        <activity android:name=".PhoneOTP.PhoneVerifyActivity"></activity>
+        <activity android:name=".MysqlPhpApi.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PhoneOTP.PhoneVerifyActivity"></activity>
-        <activity android:name=".MysqlPhpApi.LoginActivity"></activity>
         <activity android:name=".MysqlPhpApi.RegisterActivity" />
         <activity android:name=".GoogleSignIn.GoogleLoginActivity" />
         <activity android:name=".EmailPassword.LoginActivity" />

@@ -3,6 +3,7 @@ package com.trishasofttech.authentication.MysqlPhpApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -26,6 +27,9 @@ public class LoginActivity extends AppCompatActivity {
     private EditText email, password;
     private String url = "http://searchkero.com/rachit/login.php";
 
+    private SharedPreferences sp;
+    private SharedPreferences.Editor ed;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +38,11 @@ public class LoginActivity extends AppCompatActivity {
         password = findViewById(R.id.password);
         create = findViewById(R.id.create);
         login = findViewById(R.id.login);
+
+        /*to create the sp file*/
+        sp = getSharedPreferences("login", 0);
+        ed  = sp.edit();
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,6 +73,10 @@ public class LoginActivity extends AppCompatActivity {
                             Intent  intent = new Intent(LoginActivity.this,
                                     MainActivity.class);
                             startActivity(intent);
+
+                            /*to change the b value to true*/
+                            ed.putBoolean("data", true);
+                            ed.commit();
                             finish();
                         }
                        else {
@@ -86,5 +99,18 @@ public class LoginActivity extends AppCompatActivity {
         };
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        /*if boolean is true*/
+        if (sp.getBoolean("data", false)== true)
+        {
+            Intent  intent = new Intent(LoginActivity.this,
+                    MainActivity.class);
+            startActivity(intent);
+        }
+
     }
 }
